@@ -1,3 +1,63 @@
+Lua
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local hacked = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local b = Instance.new("TextLabel")
+local a = Instance.new("TextLabel")
+
+--Properties:
+
+hacked.Name = "hacked"
+hacked.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+hacked.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = hacked
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.182812497, 0, 0.182926834, 0)
+ImageButton.Size = UDim2.new(0, 498, 0, 344)
+ImageButton.Image = "rbxassetid://7120897383"
+
+b.Name = "b"
+b.Parent = ImageButton
+b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+b.BackgroundTransparency = 1.000
+b.BorderColor3 = Color3.fromRGB(0, 0, 0)
+b.BorderSizePixel = 0
+b.Position = UDim2.new(-0.0261044186, 0, -0.261627913, 0)
+b.Size = UDim2.new(0, 312, 0, 188)
+b.Font = Enum.Font.Unknown
+b.Text = "Pirocoptero TEAM"
+b.TextColor3 = Color3.fromRGB(216, 0, 0)
+b.TextSize = 30.000
+
+a.Name = "a"
+a.Parent = ImageButton
+a.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+a.BackgroundTransparency = 1.000
+a.BorderColor3 = Color3.fromRGB(0, 0, 0)
+a.BorderSizePixel = 0
+a.Position = UDim2.new(0.186746985, 0, 0.180232555, 0)
+a.Size = UDim2.new(0, 312, 0, 188)
+a.Font = Enum.Font.Unknown
+a.Text = "hacked by : Davi666 and mkz ez"
+a.TextColor3 = Color3.fromRGB(136, 136, 136)
+a.TextSize = 30.000
+
+-- Scripts:
+
+local function FDTEKCY_fake_script() -- ImageButton.LocalScript 
+    local script = Instance.new('LocalScript', ImageButton)
+
+    script.Parent.t:Play()
+    
+end
+coroutine.wrap(FDTEKCY_fake_script)()
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
