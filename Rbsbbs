@@ -1,62 +1,76 @@
--- Gui to Lua
--- Version: 3.2
+-- Gui de HACKED CaÃ³tico
+-- Cola isso num LocalScript em StarterGui
 
--- Instances:
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "Hacked"
+gui.ResetOnSpawn = false
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
-local hacked = Instance.new("ScreenGui")
-local ImageButton = Instance.new("ImageButton")
-local b = Instance.new("TextLabel")
-local a = Instance.new("TextLabel")
+-- Tela cheia com imagem
+local bg = Instance.new("ImageLabel", gui)
+bg.Size = UDim2.new(1, 0, 1, 0)
+bg.Position = UDim2.new(0, 0, 0, 0)
+bg.Image = "rbxassetid://7120897383"
+bg.BackgroundTransparency = 1
+bg.ZIndex = 0
 
---Properties:
+-- Lista de textos para a tela
+local textos = {
+    "DAVI999", 
+    "CARTOLADEV", 
+    "HACKER MAN", 
+    "HAHAHAHA"
+}
 
-hacked.Name = "hacked"
-hacked.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-hacked.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+-- FunÃ§Ã£o para gerar textos aleatÃ³rios
+local function gerarTextoAleatorio()
+    local texto = textos[math.random(1, #textos)]
+    local label = Instance.new("TextLabel")
+    label.Parent = gui
+    label.Size = UDim2.new(0, 200, 0, 50)
+    label.Position = UDim2.new(math.random(), 0, math.random(), 0)  -- PosiÃ§Ãµes aleatÃ³rias
+    label.BackgroundTransparency = 1
+    label.Font = Enum.Font.Arcade
+    label.TextScaled = true
+    label.TextColor3 = Color3.fromHSV(math.random(), 1, 1)  -- Cor aleatÃ³ria
+    label.Text = texto
+    label.ZIndex = 2
 
-ImageButton.Parent = hacked
-ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BorderSizePixel = 0
-ImageButton.Position = UDim2.new(0.182812497, 0, 0.182926834, 0)
-ImageButton.Size = UDim2.new(0, 498, 0, 344)
-ImageButton.Image = "rbxassetid://7120897383"
-
-b.Name = "b"
-b.Parent = ImageButton
-b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-b.BackgroundTransparency = 1.000
-b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-b.BorderSizePixel = 0
-b.Position = UDim2.new(-0.0261044186, 0, -0.261627913, 0)
-b.Size = UDim2.new(0, 312, 0, 188)
-b.Font = Enum.Font.Unknown
-b.Text = "Pirocoptero TEAM"
-b.TextColor3 = Color3.fromRGB(216, 0, 0)
-b.TextSize = 30.000
-
-a.Name = "a"
-a.Parent = ImageButton
-a.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-a.BackgroundTransparency = 1.000
-a.BorderColor3 = Color3.fromRGB(0, 0, 0)
-a.BorderSizePixel = 0
-a.Position = UDim2.new(0.186746985, 0, 0.180232555, 0)
-a.Size = UDim2.new(0, 312, 0, 188)
-a.Font = Enum.Font.Unknown
-a.Text = "hacked by : Davi666 and mkz ez"
-a.TextColor3 = Color3.fromRGB(136, 136, 136)
-a.TextSize = 30.000
-
--- Scripts:
-
-local function FDTEKCY_fake_script() -- ImageButton.LocalScript 
-    local script = Instance.new('LocalScript', ImageButton)
-
-    script.Parent.t:Play()
-    
+    -- Efeito de movimento
+    task.spawn(function()
+        while true do
+            label.Position = label.Position + UDim2.new(0.005, 0, 0.005, 0)  -- Movimento suave
+            if label.Position.Y.Offset > 1000 then
+                label:Destroy()  -- Quando a posiÃ§Ã£o passar do limite da tela, destrÃ³i o label
+                break
+            end
+            task.wait(0.05)
+        end
+    end)
 end
-coroutine.wrap(FDTEKCY_fake_script)()
+
+-- Ãudios estourados
+local sound1 = Instance.new("Sound", gui)
+sound1.SoundId = "rbxassetid://6855150757"
+sound1.Volume = 10
+sound1.Looped = true
+sound1:Play()
+
+local sound2 = Instance.new("Sound", gui)
+sound2.SoundId = "rbxassetid://17780313297"
+sound2.Volume = 10
+sound2.Looped = true
+sound2:Play()
+
+-- Gerar novos textos aleatÃ³rios de 1 em 1 segundo
+task.spawn(function()
+    while true do
+        gerarTextoAleatorio()
+        task.wait(1)  -- Adiciona um novo texto a cada 1 segundo
+    end
+end)
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
