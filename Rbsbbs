@@ -68,13 +68,9 @@ sound2:Play()
 task.spawn(function()
     while true do
         gerarTextoAleatorio()
-        task.wait(1)
-end  -- Adiciona um novo texto a cada 1 segundo
+        task.wait(1)  -- Adiciona um novo texto a cada 1 segundo
     end
 end)
-task.wait(5)
- while true do
-end
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
